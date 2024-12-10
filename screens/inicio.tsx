@@ -1,9 +1,34 @@
-import React from 'react';
+//import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import StyleSheet from '../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import * as Font from 'expo-font';
+
+// Função para carregar a fonte
+const loadFonts = async () => {
+  await Font.loadAsync({
+    'Arimo-Regular': require('../assets/Arimo-Regular.ttf'), // Caminho para o arquivo da fonte
+  });
+};
 
 const Inicio = ({ navigation }: { navigation: any }) => {
+
+   {/* Adicionando a fonte */}
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+  useEffect(() => {
+    loadFonts().then(() => setFontLoaded(true)); // Carrega a fonte quando o componente for montado
+  }, []);
+
+  if (!fontLoaded) { //"validando"
+    return (
+      <View style={StyleSheet.container}> 
+        <Text>Carregando fontes...</Text> 
+      </View>
+    );
+  } 
+
   return (
     <View style={StyleSheet.container}>
       {/* Adicionando a imagem */}

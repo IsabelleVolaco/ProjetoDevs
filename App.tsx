@@ -54,11 +54,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff', 
     shadowColor: 'transparent', 
     shadowOpacity: 0,    
+    
   },
   headerTitle: {
     color: '#068BFF',
     fontFamily: 'Arimo-Regular',
-    fontSize: 20,
+    fontSize: 35,
+    marginTop: 25,
   },
 });
 
